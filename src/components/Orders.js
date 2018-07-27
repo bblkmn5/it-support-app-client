@@ -1,12 +1,16 @@
 import React from 'react';
 
-const Orders = ({ orders } ) => {
-  const renderOrders = orders.map((order) =>
+const Orders = ({ orders }) => {
+  console.log(this.state)
+  const renderOrders = orders.map(order =>
     <p key={order.id}>{order.device}</p>
   )
 
   return (
-    <div>{renderOrders}</div>
+    <div>
+      <h3>Current Orders</h3>
+        {renderOrders}
+    </div>
   )
 }
 
