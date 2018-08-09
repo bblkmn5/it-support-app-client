@@ -33,41 +33,51 @@ class AddOrder extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleOnSubmit}>
-        <label htmlFor="order_device">Device</label>
-          <input type="text"
-            name="device"
-            value={this.state.device}
-            onChange={this.handleOnChange}
-            placeholder="Device to Service"
-          />
-
-        <label htmlFor="order_service">Service</label>
+    <div>
+      <h2>Add an Order</h2>
+      <form className="add-order" onSubmit={this.handleOnSubmit}>
+        <div>
+          <label htmlFor="order_device">Device</label>
+            <input type="text"
+              name="device"
+              value={this.state.device}
+              onChange={this.handleOnChange}
+              placeholder="Device to Service"
+            />
+        </div>
+        <div>
+          <label htmlFor="order_service">Service</label>
           <input type="text"
             name="service"
             value={this.state.service}
             onChange={this.handleOnChange}
             placeholder="Service Type"
           />
+        </div>
 
-        <label htmlFor="order_location">Location</label>
+        <div>
+          <label htmlFor="order_location">Location</label>
           <input type="text"
             name="location"
             value={this.state.location}
             onChange={this.handleOnChange}
             placeholder="Location for Service"
-          />
+          /><br />
+        </div>
 
-        <label htmlFor="order_notes">Notes</label>
+        <div>
+          <label htmlFor="order_notes">Notes</label>
           <input type="text-area"
             name="notes"
             value={this.state.notes}
             onChange={this.handleOnChange}
             placeholder="Service Notes"
           />
+        </div>
 
         <button>Add Service Order</button>
       </form>
+    </div>
     )
   }
 }
