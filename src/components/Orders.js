@@ -3,9 +3,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 const Orders = ({ orders }) => {
   console.log(this.state)
+  //need to add delete button to delete order when completed.
+  //don't think I need a class/constructor, but arrow function. Else, just render on order page .forEach order.
+  //Therefore, do not even need a component for delete. look up lecture for how to add delete button to each instance
+  //of an order, then render the current list of orders minus the deleted order without page refresh
+  
   const renderOrders = orders.map(order =>
     <Router>
-      <p key={order.id}>{order.device}-{order.location}-{order.service}-{order.notes}</p>
+      <p key={order.id}>{order.device}-{order.location}-{order.service}</p>
     </Router>
   )
 

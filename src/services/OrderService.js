@@ -4,6 +4,7 @@ const OrderService = {
   fetchOrders() {
     return fetch(`${API_URL}/orders`)
       .then(response => response.json())
+
   },
 
   createOrder(order) {

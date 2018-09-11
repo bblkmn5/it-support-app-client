@@ -1,4 +1,4 @@
-.navbar ul {
+/* .navbar ul {
   list-style-type: none;
   display: inline-flex;
   float: none;
@@ -13,7 +13,7 @@
   background-color:lightskyblue;
 }
 
-.side-container {
+.order-container {
   text-align: center;
   background: blue;
   color: white;
@@ -52,4 +52,4 @@ input[type=text]:focus {
 
 label {
   font-size: 15pt;
-}
+} */
