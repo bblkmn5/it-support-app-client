@@ -1,12 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import { Table } from 'react-bootstrap'
 const Orders = ({ orders }) => {
-  console.log(this.state)
-  
   const renderOrders = orders.map(order =>
     <Router>
-      <p key={order.id}>{order.device}-{order.location}-{order.service}</p>
+      <Table responsive striped bordered condensed hover>
+        <thead>
+          <tr>
+            <th>Order #</th>
+            <th>Device</th>
+            <th>Location</th>
+            <th>Service Type</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{order.id}</td>
+            <td>{order.device}</td>
+            <td>{order.location}</td>
+            <td>{order.service}</td>
+            <td>{order.notes}</td>
+          </tr>
+        </tbody>
+      </Table>
     </Router>
   )
 

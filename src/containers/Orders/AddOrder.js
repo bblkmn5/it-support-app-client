@@ -22,6 +22,7 @@ class AddOrder extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     const order = this.state;
+    console.log(order)
     this.props.addOrder(order)
     this.setState({
       device: '',

@@ -28,6 +28,7 @@ class App extends Component {
     OrderService.createOrder(order).then(order => this.setState({
       orders: this.state.orders.concat(order)
     }))
+    //FIX THIS
   }
 
   render() {
