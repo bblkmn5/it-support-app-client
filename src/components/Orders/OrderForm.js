@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AddOrder extends Component {
+class OrderForm extends Component {
   constructor(props) {
     super(props)
 
@@ -8,7 +8,7 @@ class AddOrder extends Component {
       device: '',
       service: '',
       location: '',
-      notes: '',
+      notes: ''
     }
   }
 
@@ -22,8 +22,7 @@ class AddOrder extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     const order = this.state;
-    console.log(order)
-    this.props.addOrder(order)
+    this.addOrder(order)
     this.setState({
       device: '',
       service: '',
@@ -83,4 +82,4 @@ class AddOrder extends Component {
   }
 }
 
-export default AddOrder;
+export default OrderForm;
