@@ -12,9 +12,7 @@ const Navigator = (props) => {
         <Navbar.Brand>
           <NavLink to={'/'} exact>Home</NavLink>
         </Navbar.Brand>
-        <Navbar.Toggle />
       </Navbar.Header>
-      <Navbar.Collapse>
         <Nav>
           <LinkContainer to={'/add_order'} exact>
             <NavItem eventKey={1}>
@@ -27,7 +25,6 @@ const Navigator = (props) => {
             </NavItem>
           </LinkContainer>
         </Nav>
-      </Navbar.Collapse>
       </Navbar>
     </Col>
   );

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { createOrder } from '../../actions/order_actions'
 
 class OrderForm extends Component {
   constructor(props) {
@@ -21,13 +23,13 @@ class OrderForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const order = this.state;
-    this.addOrder(order)
-    this.setState({
-      device: '',
-      service: '',
-      location: '',
-      notes: '',
+    this.props.createOrder(this.state)
+      .then(() => {this.setState({
+        device: '',
+        service: '',
+        location: '',
+        notes: '',
+      })
     })
   }
 
@@ -82,4 +84,10 @@ class OrderForm extends Component {
   }
 }
 
-export default OrderForm;
+const mapStateToProps = state => {
+  return {
+    state: state
+  }
+}
+
+export default connect(mapStateToProps,{ createOrder })(OrderForm);
