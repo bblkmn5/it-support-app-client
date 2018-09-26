@@ -1,18 +1,13 @@
-const initialState = {
-    orders: []
-}
-
-const ordersReducer = (state = initialState, action) => {
-
+const ordersReducer = (state = [], action) => {
     switch(action.type) {
         case 'GET_ORDERS':
-            return Object.assign({}, initialState, {
-                orders: action.orders 
-            });
+            return action.orders; 
+        case 'UPDATE_ORDER':
+            return action.orders;
         case 'ADD_ORDER':
-            return Object.assign({}, initialState, {
-                orders: state.orders.concat(action.order)
-            });
+            return state.concat(action.order);
+        case 'DELETE_ORDER':
+            return state.filter(order => order.id !== action.id);
         default:
             return state;
     }

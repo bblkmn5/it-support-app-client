@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import { fetchOrders } from '../../actions/order_actions';
+import { fetchOrders, deleteOrder } from '../../actions/order_actions';
 import Order from './Order';
 import { bindActionCreators } from 'redux';
 
@@ -12,7 +12,6 @@ class OrdersContainer extends Component {
   }
 
   render() {
-    const renderOrders = this.props.orders.orders.map(order => <Order key={order.id} order={order} />)
     return (
       <div>
         <Table responsive striped bordered condensed hover>
@@ -25,9 +24,8 @@ class OrdersContainer extends Component {
                 <th>Notes</th>
             </tr>
           </thead>
-          <tbody>
-            { renderOrders }
-          </tbody>
+          <Order orders={this.props.orders}
+              deleteOrder={this.props.deleteOrder} />
         </Table>
       </div>
     )
@@ -42,7 +40,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    fetchOrders: fetchOrders
+    fetchOrders: fetchOrders,
+    deleteOrder: deleteOrder
   }, dispatch)
 }
 
