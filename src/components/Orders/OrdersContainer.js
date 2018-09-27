@@ -46,9 +46,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrdersContainer);
-
-//need to add delete button to delete order when completed.
-  //don't think I need a class/constructor, but arrow function. Else, just render on order page .forEach order.
-  //Therefore, do not even need a component for delete. look up lecture for how to add delete button to each instance
-  //of an order, then render the current list of orders minus the deleted order without page refresh
   

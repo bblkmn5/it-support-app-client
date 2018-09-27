@@ -6,10 +6,6 @@ const getOrders = orders => {
     return { type: 'GET_ORDERS', orders }
 }
 
-const setOrder = order => {
-    return { type: 'UPDATE_ORDER', order }
-}
-
 const addOrder = order => {
     return { type: 'ADD_ORDER', order }
 }
@@ -23,14 +19,6 @@ export const fetchOrders = () => dispatch => {
         .then(response => response.json())
         .then(orders => dispatch(getOrders(orders)))
         .catch(error => console.log(error))
-}
-
-export const updateOrder = order => dispatch => {
-    return fetch(`${API_URL}/order/${order}`)
-        .then(response => response.json())
-        .then(order => dispatch(setOrder(order)))
-        .catch(error => console.log(error))
-
 }
 
 export const createOrder = order => dispatch => {
