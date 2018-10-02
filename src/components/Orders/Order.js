@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import TableData from './OrderTable';
 
 class Order extends Component {
     render() {
-        const orderList = this.props.orders.map(order =>
+        const orderList = this.props.orders.orders.map(order =>
             <tr key={order.id}>
-                <td>{order.id}<Button bsStyle="link" onClick={() => this.props.deleteOrder(order.id)}>Delete</Button></td>
-                <td>{order.device}</td>
-                <td>{order.location}</td>
-                <td>{order.service}</td>
-                <td>{order.notes}</td>
+                <TableData to={<Order order={order} />}>{order.id}<Button bsSize="small" onClick={() => this.props.deleteOrder(order.id)}>Delete</Button></TableData>
+                <TableData to={<Order order={order}/>}>{order.device}</TableData>
+                <TableData to={<Order order={order}/>}>{order.location}</TableData>
+                <TableData to={<Order order={order}/>}>{order.service}</TableData>
+                <TableData to={<Order order={order}/>}>{order.notes}</TableData>
             </tr>    
         )
 
@@ -21,7 +22,7 @@ class Order extends Component {
 
         return (
             <tbody>
-                {orderList.length === 0 ? emptyMessage : orderList }
+                { orderList.length === 0 ? emptyMessage : orderList }
             </tbody>
         )
     }
