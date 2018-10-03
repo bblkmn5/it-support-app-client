@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { createOrder } from '../../actions/order_actions'
+import { createOrder, updateOrder } from '../../actions/order_actions'
 
 class OrderForm extends Component {
   constructor(props) {
@@ -10,8 +10,29 @@ class OrderForm extends Component {
       device: '',
       service: '',
       location: '',
-      notes: ''
+      notes: '',
+      currentOrder: {}
     }
+  }
+
+  componentDidMount() {
+    this.setState({
+      ...this.props.order
+    })
+  }
+
+  componentWillMount() {
+    this.handleOrder()
+  }
+
+  handleOrder() {
+    const currentOrder = this.props.currentOrder
+    const initialData = this.setState({
+      device: currentOrder.device,
+      "service": currentOrder.service,
+      "location": currentOrder.location,
+      "notes": currentOrder.notes
+    })
   }
 
   handleOnChange = event => {
@@ -23,14 +44,18 @@ class OrderForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.props.createOrder(this.state)
-      .then(() => {this.setState({
+    if(this.state.id === undefined) { 
+      this.props.createOrder(this.state)
+     } else { 
+       this.props.updateOrder(this.state.id, this.state)
+     }
+      this.setState({
         device: '',
         service: '',
         location: '',
         notes: '',
+        currentOrder: {}
       })
-    })
   }
 
   render() {
@@ -86,8 +111,9 @@ class OrderForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    state: state
+    state: state,
+    currentOrder: state.orders.currentOrder
   }
 }
 
-export default connect(mapStateToProps,{ createOrder })(OrderForm);
+export default connect(mapStateToProps,{ createOrder, updateOrder })(OrderForm);
