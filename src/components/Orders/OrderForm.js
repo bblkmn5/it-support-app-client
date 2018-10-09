@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { createOrder, updateOrder } from '../../actions/order_actions'
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form'; 
+import { createOrder, updateOrder } from '../../actions/order_actions';
+
+const form = reduxForm({
+  form: 'order'
+})
 
 class OrderForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      device: '',
-      service: '',
-      location: '',
-      notes: '',
-      currentOrder: {}
+      device: props.device || '',
+      service: props.service || '',
+      location: props.location || '',
+      notes: props.notes || ''
     }
   }
 
@@ -27,12 +31,13 @@ class OrderForm extends Component {
 
   handleOrder() {
     const currentOrder = this.props.currentOrder
-    const initialData = this.setState({
+    this.setState({
       device: currentOrder.device,
-      "service": currentOrder.service,
-      "location": currentOrder.location,
-      "notes": currentOrder.notes
+      service: currentOrder.service,
+      location: currentOrder.location,
+      notes: currentOrder.notes
     })
+
   }
 
   handleOnChange = event => {
@@ -49,13 +54,12 @@ class OrderForm extends Component {
      } else { 
        this.props.updateOrder(this.state.id, this.state)
      }
-      this.setState({
-        device: '',
-        service: '',
-        location: '',
-        notes: '',
-        currentOrder: {}
-      })
+    this.setState({
+      device: '',
+      service: '',
+      location: '',
+      notes: ''
+    })
   }
 
   render() {
@@ -116,4 +120,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{ createOrder, updateOrder })(OrderForm);
+export default connect(mapStateToProps,{ createOrder, updateOrder })(form(OrderForm));

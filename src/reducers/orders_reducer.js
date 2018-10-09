@@ -12,7 +12,7 @@ const ordersReducer = (state = initialState, action) => {
         case 'SET_ORDER':
             return {
                 ...state,
-                currentOrder: state.orders.filter(order => order.id === action.order_id[0])
+                currentOrder: state.orders.filter(order => order.id === action.order_id)[0]
             }
         case 'UPDATE_ORDER':
             const order = state.orders.filter(a => a.id === action.order.id)[0];

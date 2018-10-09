@@ -25,14 +25,14 @@ class OrdersContainer extends Component {
   }
 
   setOrder = id => this.props.setCurrentOrder(id)
-  updateOrder = id => this.props.updateOrder(id)
+  onUpdate = id => this.props.updateOrder(id)
   onDelete = id => this.props.deleteOrder(id)
   handleOpenModal = () => this.setState({showModal: true})
   handleCloseModal = () => this.setState({showModal: false})
 
   handleRowClick = id => {
     this.setOrder(id)
-    this.handleOpenModal()
+    this.handleOpenModal(id)
   }
 
   render() {
@@ -60,7 +60,7 @@ class OrdersContainer extends Component {
           onRequestClose={this.handleCloseModal}>
           <h1>View/Edit Order</h1>
           <button className="modal-button" onClick={this.handleCloseModal}>X</button>
-          <OrderForm order={this.setOrder} onSubmit={this.props.addOrder}/>
+          <OrderForm order={this.props.setCurrentOrder} onSubmit={this.props.addOrder}/>
         </Modal>
       </div>
     )
@@ -70,7 +70,7 @@ class OrdersContainer extends Component {
 const mapStateToProps = state => {
   return {
     orders: state.orders.orders,
-    setOrder: state.orders.setCurrentOrder
+    currentOrder: state.orders.currentOrder,
   };
 }
 
