@@ -7,7 +7,7 @@ const getOrders = orders => {
 }
 
 const setOrder = order_id => {
-    return { type: 'SET_ORDER', order_id}
+    return { type: 'SET_ORDER', order_id: order_id}
 }
 
 const addOrder = order => {
@@ -16,9 +16,9 @@ const addOrder = order => {
 
 const editOrder = order => {
     return { 
-        type: 'EDIT_ORDER', 
+        type: 'UPDATE_ORDER',
         order: order, 
-        id: order.id 
+        id: order.id
     }
 }
 
@@ -40,10 +40,10 @@ export const setCurrentOrder = order_id => dispatch => {
         .catch(error => console.log(error))
 }
 
-export const updateOrder = (order) => dispatch => {
+export const updateOrder = order => dispatch => {
     return fetch(`${API_URL}/orders/${order.id}`, {
         method: 'PATCH',
-        body: JSON.stringify({ order: order }),
+        body: JSON.stringify({ order }),
         headers: {
             'Content-Type': 'application/json',
         }

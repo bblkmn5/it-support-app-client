@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 function Order(props){
-    const handleClick = () => props.onClick(props.order.id)
+    const handleClick = () => props.onClick(props.order)
     const handleDelete = () => {
         props.onDelete(props.order.id)
     }

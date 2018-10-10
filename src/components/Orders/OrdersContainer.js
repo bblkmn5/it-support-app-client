@@ -36,7 +36,7 @@ class OrdersContainer extends Component {
   }
 
   render() {
-    let renderedOrders = this.props.orders.map(order => <Order key={order.id} order={order} onClick={this.handleRowClick} onUpdate={this.onUpdate} onDelete={this.onDelete} />)
+    let renderedOrders = this.props.orders.map(order => <Order key={order.id} order={order} onClick={this.handleRowClick} setOrder={this.setOrder} onDelete={this.onDelete} />)
     const emptyMessage = ( <tr><td>There are no orders!</td></tr> )
     return (
       <div>
@@ -60,7 +60,7 @@ class OrdersContainer extends Component {
           onRequestClose={this.handleCloseModal}>
           <h1>View/Edit Order</h1>
           <button className="modal-button" onClick={this.handleCloseModal}>X</button>
-          <OrderForm order={this.props.setCurrentOrder} onSubmit={this.props.addOrder}/>
+          <OrderForm order={this.props.order} onSubmit={this.props.handleOnSubmit}/>
         </Modal>
       </div>
     )
