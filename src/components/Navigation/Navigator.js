@@ -19,9 +19,9 @@ const Navigator = (props) => {
               Add Order
             </NavItem>
           </LinkContainer>
-          <LinkContainer to={'/orders'}>
+          <LinkContainer to={'/about'}>
             <NavItem eventKey={2}>
-              View Orders
+              About
             </NavItem>
           </LinkContainer>
         </Nav>

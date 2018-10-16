@@ -46,6 +46,7 @@ class OrderForm extends Component {
   }
 
   render() {
+    const locationValues = this.props;
     return (
     <div>
       <h2>Add an Order</h2>
@@ -57,7 +58,6 @@ class OrderForm extends Component {
             component="input"
             value={this.state.device}
             onChange={this.handleOnChange}
-            type="text"
             placeholder="Device to Service"
           />
         </div>
@@ -65,34 +65,53 @@ class OrderForm extends Component {
           <label htmlFor="service">Service</label>
           <Field 
               name="service"
-              component="input"
+              component="select"
               value={this.state.service}
               onChange={this.handleOnChange}
-              type="text"
-              placeholder="Service Type"
-            />
+              placeholder="Service Type">
+              <option />
+              <option>Training</option>
+              <option>Installation</option>
+              <option>Maintenance</option>
+              <option>Inquiry</option>
+              <option>Other</option>
+            </Field>
         </div>
         <div>
           <label htmlFor="location">Location</label>
-          <Field 
-              name="location"
-              component="input"
-              value={this.state.location}
-              onChange={this.handleOnChange}
-              type="text"
-              placeholder="Location for Service"
-            />
+          <div>
+              <Field 
+                name="location"
+                component="input"
+                type="radio"
+                value={this.state.location}
+                onChange={this.handleOnChange}
+                placeholder="Location for Service">
+              </Field>
+            </div>
+            {locationValues && (
+              <div>
+                <Field
+                  name="onSiteLocations"
+                  component="select" >
+                  <option>Office</option>
+                  <option>Home</option>
+                  <option>Online</option>
+                </Field>
+              </div>
+            )}
         </div>
         <div>
           <label htmlFor="notes">Notes</label>
-          <Field 
-              name="notes"
-              component="input"
-              value={this.state.notes}
-              onChange={this.handleOnChange}
-              type="textarea"
-              placeholder="Service Notes"
-            />
+          <div>
+            <Field 
+                name="notes"
+                component="textarea"
+                value={this.state.notes}
+                onChange={this.handleOnChange}
+                placeholder="Service Notes"
+              />
+            </div>
         </div>
         <button>Add Service Order</button>
       </form>

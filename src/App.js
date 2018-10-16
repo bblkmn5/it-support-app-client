@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import Home from './components/Home/Home';
+import About from './components/About/About';
 import OrderForm from './components/Orders/OrderForm';
 import OrdersContainer from './components/Orders/OrdersContainer';
 
@@ -15,9 +15,9 @@ const App = () => {
     <div> 
       <Layout>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={OrdersContainer} />
           <Route exact path="/add_order"  component={OrderForm} />
-          <Route exact path="/orders" component={OrdersContainer} />
+          <Route exact path="/about" component={About} />
         </Switch>
       </Layout>
     </div> 
