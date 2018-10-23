@@ -15,7 +15,8 @@ class OrderForm extends Component {
       device: props.device || '',
       service: props.service || '',
       location: props.location || '',
-      notes: props.notes || ''
+      notes: props.notes || '',
+      locationValues: false
     }
   }
 
@@ -34,19 +35,10 @@ class OrderForm extends Component {
     })
   }
 
-  handleOnSubmit = event => {
-    event.preventDefault();
-    this.props.createOrder(this.state)
-    this.setState({
-      device: '',
-      service: '',
-      location: '',
-      notes: ''
-    }) 
-  }
+  
 
   render() {
-    const locationValues = this.props;
+    const { locationValues } = this.props;
     return (
     <div>
       <h2>Add an Order</h2>
@@ -63,30 +55,36 @@ class OrderForm extends Component {
         </div>
         <div>
           <label htmlFor="service">Service</label>
-          <Field 
-              name="service"
-              component="select"
-              value={this.state.service}
-              onChange={this.handleOnChange}
-              placeholder="Service Type">
-              <option />
-              <option>Training</option>
-              <option>Installation</option>
-              <option>Maintenance</option>
-              <option>Inquiry</option>
-              <option>Other</option>
+          <div>
+            <Field 
+                name="service"
+                component="select"
+                value={this.state.service}
+                onChange={this.handleOnChange}
+                placeholder="Service Type">
+                <option />
+                <option>Training</option>
+                <option>Installation</option>
+                <option>Maintenance</option>
+                <option>Inquiry</option>
+                <option>Other</option>
             </Field>
+            </div> 
         </div>
         <div>
           <label htmlFor="location">Location</label>
           <div>
               <Field 
                 name="location"
-                component="input"
+                component="select"
                 type="radio"
                 value={this.state.location}
                 onChange={this.handleOnChange}
-                placeholder="Location for Service">
+                placeholder="Location for Service"
+                >
+                <option />
+                <option>On-Site</option>
+                <option>Wireless</option>
               </Field>
             </div>
             {locationValues && (

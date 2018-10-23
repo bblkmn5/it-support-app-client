@@ -24,15 +24,27 @@ class OrdersContainer extends Component {
     this.props.fetchOrders()
   }
 
-  setOrder = id => this.props.setCurrentOrder(id)
-  onUpdate = id => this.props.updateOrder(id)
+  // setOrder = id => this.props.setCurrentOrder(id)
+  // onUpdate = id => this.props.updateOrder(id)
   onDelete = id => this.props.deleteOrder(id)
   handleOpenModal = () => this.setState({showModal: true})
   handleCloseModal = () => this.setState({showModal: false})
 
   handleRowClick = id => {
-    this.setOrder(id)
+    // this.setOrder(id)
     this.handleOpenModal(id)
+  }
+
+  handleOnSubmit = event => {
+    event.preventDefault();
+    this.props.createOrder(this.state)
+    this.handleCloseModal()
+    this.props.setState({
+      device: '',
+      service: '',
+      location: '',
+      notes: ''
+    }) 
   }
 
   render() {
@@ -48,6 +60,7 @@ class OrdersContainer extends Component {
                 <th>Location</th>
                 <th>Service Type</th>
                 <th>Notes</th>
+                <th><button onClick={this.handleOpenModal}>Add Order</button></th>
             </tr>
           </thead>
           <tbody>
