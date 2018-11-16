@@ -14,9 +14,9 @@ const Navigator = (props) => {
         </Navbar.Brand>
       </Navbar.Header>
         <Nav>
-          <LinkContainer to={'/add_order'} exact>
+          <LinkContainer to={'/technicians'} exact>
             <NavItem eventKey={1}>
-              Add Order
+              Technicians
             </NavItem>
           </LinkContainer>
           <LinkContainer to={'/about'}>
