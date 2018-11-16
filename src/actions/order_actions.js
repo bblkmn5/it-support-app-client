@@ -6,20 +6,8 @@ const getOrders = orders => {
     return { type: 'GET_ORDERS', orders }
 }
 
-const setOrder = order_id => {
-    return { type: 'SET_ORDER', order_id: order_id}
-}
-
 const addOrder = order => {
     return { type: 'ADD_ORDER', order }
-}
-
-const editOrder = order => {
-    return { 
-        type: 'UPDATE_ORDER',
-        order: order, 
-        id: order.id
-    }
 }
 
 const destroyOrder = order => {
@@ -31,26 +19,6 @@ export const fetchOrders = () => dispatch => {
         .then(response => response.json())
         .then(orders => dispatch(getOrders(orders)))
         .catch(error => console.log(error))
-}
-
-export const setCurrentOrder = order_id => dispatch => {
-    return fetch(`${API_URL}/orders/${order_id}`)
-        .then(response => response.json())
-        .then(order => dispatch(setOrder(order)))
-        .catch(error => console.log(error))
-}
-
-export const updateOrder = order => dispatch => {
-    return fetch(`${API_URL}/orders/${order.id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({ order }),
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
-    .then(response => response.json())
-    .then(order => dispatch(editOrder(order)))
-    .catch(error => console.log(error))
 }
 
 export const createOrder = order => dispatch => {

@@ -1,4 +1,4 @@
-div a.active, ul li.active{
+div a.active, li.active{
     font-weight: bold!important;
     color: #fff!important;
 }
