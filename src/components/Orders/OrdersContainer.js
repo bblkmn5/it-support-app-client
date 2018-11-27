@@ -43,6 +43,7 @@ class OrdersContainer extends Component {
             <tr>
               <th>Order #</th>
               <th>Device</th>
+              <th>Device Type</th>
               <th>Location</th>
               <th>Service Type</th>
               <th>Technician</th>

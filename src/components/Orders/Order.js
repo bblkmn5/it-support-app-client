@@ -12,6 +12,7 @@ function Order(props){
         <tr>
             <td>{props.order.id}</td>
             <td>{props.order.device}</td>
+            <td>{props.order.deviceType}</td>
             <td>{props.order.location}</td>
             <td>{props.order.service}</td>
             <td>{props.order.technician}</td>

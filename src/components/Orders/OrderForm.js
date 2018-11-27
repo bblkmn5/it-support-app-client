@@ -13,8 +13,10 @@ class OrderForm extends Component {
 
     this.state = {
       device: '',
+      deviceType: '',
       service: '',
       location: '',
+      technician: '',
       notes: ''
     }
   }
@@ -26,9 +28,9 @@ class OrderForm extends Component {
   }
 
   canBeSubmitted() {
-    const { device, service, location, notes } = this.state;
+    const { device, deviceType, service, location, notes } = this.state;
     return (
-      device.length > 0 && service.length > 0 && location.length > 0 && notes.length > 0
+      device.length > 0 && deviceType.length > 0 && service.length > 0 && location.length > 0 && notes.length > 0
     );
   }
 
@@ -44,8 +46,10 @@ class OrderForm extends Component {
     this.props.createOrder(this.state)
     this.setState({
       device: '',
+      deviceType: '',
       service: '',
       location: '',
+      technician: '',
       notes: ''
     }) 
     this.props.handleCloseModal()
@@ -67,6 +71,24 @@ class OrderForm extends Component {
             onChange={this.handleOnChange}
             placeholder="Device to Service"
           />
+        </div>
+        <div>
+          <label htmlFor="deviceType">Device Type</label>
+          <Field
+            name="deviceType"
+            component="select"
+            value={this.state.deviceType}
+            onChange={this.handleOnChange}>
+            <option />
+            <option>Laptop</option>
+            <option>Desktop</option>
+            <option>Mobile Phone</option>
+            <option>Television</option>
+            <option>Sound System</option>
+            <option>Internet Router</option>
+            <option>Printer</option>
+            <option>Other</option>
+          </Field>
         </div>
         <div>
           <label htmlFor="service">Service</label>
@@ -94,8 +116,11 @@ class OrderForm extends Component {
               value={this.state.location}
               onChange={this.handleOnChange}>
               <option />
-              <option>On-Site</option>
-              <option>Off-Site</option>
+              <option>Onsite (office)</option>
+              <option>Onsite (home)</option>
+              <option>Offsite (video conference)</option>
+              <option>Offsite (phone call)</option>
+              <option>Other</option>
             </Field>
           </div>
         </div>
