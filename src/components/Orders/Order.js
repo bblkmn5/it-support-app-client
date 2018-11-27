@@ -14,6 +14,7 @@ function Order(props){
             <td>{props.order.device}</td>
             <td>{props.order.location}</td>
             <td>{props.order.service}</td>
+            <td>{props.order.technician}</td>
             <td>{props.order.notes}</td>
             <td><Button bsSize="small" onClick={handleDelete}>Delete</Button></td>
         </tr>    

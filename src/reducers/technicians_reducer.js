@@ -8,14 +8,6 @@ const techniciansReducer = (state = initialState, action) => {
             return {
                 ...state,
                 technicians: action.technicians };
-        case 'ADD_TECHNICIANS':
-            return {
-                ...state, 
-                technicians: state.technicians.concat(action.technician) };
-        case 'DELETE_TECHNICIANS':
-            return {
-                ...state,
-                technicians: state.technicians.filter(technician => technician.id !== action.id) };
         default:
             return state;
     }

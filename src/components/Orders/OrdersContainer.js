@@ -45,6 +45,7 @@ class OrdersContainer extends Component {
               <th>Device</th>
               <th>Location</th>
               <th>Service Type</th>
+              <th>Technician</th>
               <th>Notes</th>
               <th><button onClick={this.handleOpenModal}>Add Order</button></th>
             </tr>
