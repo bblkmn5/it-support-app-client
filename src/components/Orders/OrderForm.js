@@ -19,6 +19,9 @@ class OrderForm extends Component {
       technician: '',
       notes: ''
     }
+
+    this.handleTechnician = this.handleTechnician.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   componentDidMount() {
@@ -41,8 +44,39 @@ class OrderForm extends Component {
     })
   }
 
-    handleOnSubmit = event => {
+  handleTechnician = (deviceType) => {
+    switch(deviceType) {
+      case (deviceType === 'Mobile Phone'):
+        return 'Peter';
+        
+      case (deviceType === 'Laptop' || deviceType === 'Desktop' || deviceType === 'Tablet'):
+        return 'Bob';
+    
+      case (deviceType === 'Sound System'):
+        return 'Michelle';
+
+      case (deviceType === 'Printer'):
+        return 'Frank';
+      
+      case (deviceType === 'Internet Router'):
+        return 'Louise';
+
+      case (deviceType === 'Television'):
+        return 'Tina';
+
+      default:
+        return 'Jack';
+    }
+  }
+
+  handleOnSubmit = event => {
     event.preventDefault();
+
+    let technicianUsed = this.handleTechnician(this.handleOnChange(this.state.deviceType))
+    this.setState({
+      technician: technicianUsed
+    })
+    debugger;
     this.props.createOrder(this.state)
     this.setState({
       device: '',
@@ -82,6 +116,7 @@ class OrderForm extends Component {
             <option />
             <option>Laptop</option>
             <option>Desktop</option>
+            <option>Tablet</option>
             <option>Mobile Phone</option>
             <option>Television</option>
             <option>Sound System</option>
@@ -151,3 +186,7 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps,{ createOrder })(form(OrderForm));
+
+//You have to store the value of the radio button in state, and update it any time one of the radio buttons is updated.
+
+//Then, in your render method, render No1 or No2 based on the value of your current state

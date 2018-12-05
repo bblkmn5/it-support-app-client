@@ -6,7 +6,6 @@ function Technician(props) {
         <tr>
             <td>{props.technician.name}</td>
             <td>{props.technician.expertise}</td>
-            <td>{props.technician.maxOrders}</td>
             <td>{props.technician.notes}</td>
         </tr>    
     )

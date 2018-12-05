@@ -25,7 +25,6 @@ class TechniciansContainer extends Component {
                         <tr>
                         <th>Technician Name</th>
                         <th>Expertise</th>
-                        <th>Max Order #</th>
                         <th>Notes</th>
                         </tr>
                     </thead>

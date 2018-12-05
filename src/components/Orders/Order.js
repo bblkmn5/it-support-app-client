@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 function Order(props){
-    // const handleClick = () => props.onClick(props.order)
     const handleDelete = () => {
         window.confirm("Are you sure you wish to delete this item?") &&
         props.onDelete(props.order.id)

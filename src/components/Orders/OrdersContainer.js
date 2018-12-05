@@ -28,10 +28,6 @@ class OrdersContainer extends Component {
   handleOpenModal = () => this.setState({showModal: true})
   handleCloseModal = () => this.setState({showModal: false})
 
-  // handleRowClick = id => {
-  //   this.handleOpenModal(id)
-  // }
-
   render() {
     let renderedOrders = this.props.orders.map(order => <Order key={order.id} order={order} onClick={this.handleRowClick} onDelete={this.onDelete} />)
     const emptyMessage = ( <tr><td>There are no orders!</td></tr> )
@@ -69,8 +65,7 @@ class OrdersContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    orders: state.orders.orders,
-    currentOrder: state.orders.currentOrder,
+    orders: state.orders.orders
   };
 }
 

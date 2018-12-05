@@ -9,9 +9,6 @@ import './App.css';
 
 const App = () => {
   return (
-    //AddOrder Form will have dropdown for service type, with 'Other' option for user entry, making drop-down disappear.
-    //Dropdown for location, full screen text area for notes section. Submit button (basic). After submission, will go to 
-    //Index of all orders. Clicking will take to individual order with delete button option and update option. Fiinally, deleting will take user back to index of all orders. 
     <div> 
       <Layout>
         <Switch>
