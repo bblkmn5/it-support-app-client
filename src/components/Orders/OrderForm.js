@@ -33,13 +33,13 @@ class OrderForm extends Component {
   canBeSubmitted() {
     const { device, deviceType, service, technician, location, notes } = this.state;
     return (
-      device.length > 0 && deviceType.length > 0 && service.length > 0 && location.length > 0 && notes.length > 0
+      device.length > 0 && deviceType.length > 0 && technician.length > 0 && service.length > 0 && location.length > 0 && notes.length > 0
     );
   }
 
-  technicianRegex(technician) {
-    return technician.split(' ').shift()
-  }
+  // technicianRegex(technician) {
+  //   return technician.split(/^[^\W]+/).shift()
+  // }
 
   handleOnChange = event => {
     const { name, value } = event.target;
@@ -50,10 +50,10 @@ class OrderForm extends Component {
 
   handleOnSubmit = event => { 
     event.preventDefault();
-    const technicianName = this.technicianRegex(this.state.technician)
-    this.setState({
-      technician: technicianName
-    })
+    // const technicianName = this.technicianRegex(this.state.technician)
+    // this.setState({
+    //   technician: technicianName
+    // })
     this.props.createOrder(this.state)
     this.setState({
       device: '',
@@ -141,13 +141,13 @@ class OrderForm extends Component {
             onChange={this.handleOnChange}
             value={this.state.technician}>
             <option />
-            <option>Peter (Mobile Phone)</option>
-            <option>Bob (Laptop/Desktop/Tablet)</option>
-            <option>Michelle (Sound System)</option>
-            <option>Frank (Printer)</option>
-            <option>Louise (Internet Router)</option>
-            <option>Tina (Television)</option>
-            <option>Jack (All)</option> 
+            <option>Peter</option>
+            <option>Bob</option>
+            <option>Michelle</option>
+            <option>Frank</option>
+            <option>Louise</option>
+            <option>Tina</option>
+            <option>Jack</option> 
           </Field> 
         </div>
         <div>

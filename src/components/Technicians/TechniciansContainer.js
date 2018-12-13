@@ -24,7 +24,6 @@ class TechniciansContainer extends Component {
                     <thead>
                         <tr>
                         <th>Technician Name</th>
-                        <th>Expertise</th>
                         <th>Notes</th>
                         </tr>
                     </thead>

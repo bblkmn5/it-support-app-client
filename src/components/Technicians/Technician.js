@@ -5,7 +5,6 @@ function Technician(props) {
     return (
         <tr>
             <td>{props.technician.name}</td>
-            <td>{props.technician.expertise}</td>
             <td>{props.technician.notes}</td>
         </tr>    
     )
