@@ -20,8 +20,8 @@ class OrderForm extends Component {
       notes: ''
     }
 
-    this.handleTechnician = this.handleTechnician.bind(this);
-    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    // this.handleTechnician = this.handleTechnician.bind(this);
   }
 
   componentDidMount() {
@@ -31,10 +31,14 @@ class OrderForm extends Component {
   }
 
   canBeSubmitted() {
-    const { device, deviceType, service, location, notes } = this.state;
+    const { device, deviceType, service, technician, location, notes } = this.state;
     return (
       device.length > 0 && deviceType.length > 0 && service.length > 0 && location.length > 0 && notes.length > 0
     );
+  }
+
+  technicianRegex(technician) {
+    return technician.split(' ').shift()
   }
 
   handleOnChange = event => {
@@ -44,39 +48,12 @@ class OrderForm extends Component {
     })
   }
 
-  handleTechnician = (deviceType) => {
-    switch(deviceType) {
-      case (deviceType === 'Mobile Phone'):
-        return 'Peter';
-        
-      case (deviceType === 'Laptop' || deviceType === 'Desktop' || deviceType === 'Tablet'):
-        return 'Bob';
-    
-      case (deviceType === 'Sound System'):
-        return 'Michelle';
-
-      case (deviceType === 'Printer'):
-        return 'Frank';
-      
-      case (deviceType === 'Internet Router'):
-        return 'Louise';
-
-      case (deviceType === 'Television'):
-        return 'Tina';
-
-      default:
-        return 'Jack';
-    }
-  }
-
-  handleOnSubmit = event => {
+  handleOnSubmit = event => { 
     event.preventDefault();
-
-    let technicianUsed = this.handleTechnician(this.handleOnChange(this.state.deviceType))
+    const technicianName = this.technicianRegex(this.state.technician)
     this.setState({
-      technician: technicianUsed
+      technician: technicianName
     })
-    debugger;
     this.props.createOrder(this.state)
     this.setState({
       device: '',
@@ -89,9 +66,40 @@ class OrderForm extends Component {
     this.props.handleCloseModal()
   }
 
+  // handleTechnician = (deviceType) => {
+  //   if (deviceType === "Mobile Phone"){
+  //     this.setState({
+  //       technician: 'Peter'
+  //     })
+  //   } else if (deviceType === 'Laptop' || deviceType === "Desktop" || deviceType === 'Tablet'){
+  //     this.setState({
+  //       technician: "Bob"
+  //     })
+  //   } else if (deviceType === 'Sound System'){
+  //     this.setState({
+  //       technician: 'Michelle'
+  //     })
+  //   } else if (deviceType === 'Printer'){
+  //     this.setState({
+  //       technician: 'Frank'
+  //     })
+  //   } else if (deviceType === 'Internet Router'){
+  //     this.setState({
+  //       technician: 'Louise'
+  //     })
+  //   } else if (deviceType === 'Television'){
+  //     this.setState({
+  //       technician: 'Tina'
+  //     })
+  //   } else {
+  //     this.setState({
+  //       technician: "Jack"
+  //     })
+  //   }
+  // }
+
   render() {
     const isEnabled = this.canBeSubmitted();
-
     return (
     <div>
       <h1>Add an Order</h1>
@@ -124,6 +132,23 @@ class OrderForm extends Component {
             <option>Printer</option>
             <option>Other</option>
           </Field>
+        </div>
+        <div>
+          <label htmlFor="technician">Technician</label>
+          <Field
+            name="technician"
+            component="select"
+            onChange={this.handleOnChange}
+            value={this.state.technician}>
+            <option />
+            <option>Peter (Mobile Phone)</option>
+            <option>Bob (Laptop/Desktop/Tablet)</option>
+            <option>Michelle (Sound System)</option>
+            <option>Frank (Printer)</option>
+            <option>Louise (Internet Router)</option>
+            <option>Tina (Television)</option>
+            <option>Jack (All)</option> 
+          </Field> 
         </div>
         <div>
           <label htmlFor="service">Service</label>
