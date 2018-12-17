@@ -1,10 +1,15 @@
 form.add-order {
   margin: 50px 250px;
-  width: 50%;
+  width: 75%;
 }
 
 select, textarea, input {
-  width: 100%;
+  width: 50%;
+  margin-left: 10px;
+}
+
+textarea {
+  vertical-align: text-top;
 }
 
 h1 {

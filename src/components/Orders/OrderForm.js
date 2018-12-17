@@ -113,7 +113,6 @@ class OrderForm extends Component {
             onChange={this.handleOnChange}
             placeholder="Device to Service"
           />
-        </div>
         <div>
           <label htmlFor="deviceType">Device Type</label>
           <Field
@@ -132,6 +131,7 @@ class OrderForm extends Component {
             <option>Printer</option>
             <option>Other</option>
           </Field>
+          </div>
         </div>
         <div>
           <label htmlFor="technician">Technician</label>
@@ -148,11 +148,9 @@ class OrderForm extends Component {
             <option>Louise</option>
             <option>Tina</option>
             <option>Jack</option> 
-          </Field> 
-        </div>
-        <div>
-          <label htmlFor="service">Service</label>
+          </Field>
           <div>
+            <label htmlFor="service">Service</label>
             <Field 
                 name="service"
                 component="select"
@@ -165,37 +163,33 @@ class OrderForm extends Component {
                 <option>Inquiry</option>
                 <option>Other</option>
             </Field>
-            </div> 
-        </div>
-        <div>
-          <label htmlFor="location">Location</label>
-          <div>
-            <Field 
-              name="location"
-              component="select"
-              value={this.state.location}
-              onChange={this.handleOnChange}>
-              <option />
-              <option>Onsite (office)</option>
-              <option>Onsite (home)</option>
-              <option>Offsite (video conference)</option>
-              <option>Offsite (phone call)</option>
-              <option>Other</option>
-            </Field>
           </div>
         </div>
         <div>
-          <label htmlFor="notes">Notes</label>
-          <div>
-            <Field 
-                name="notes"
-                component="textarea"
-                rows={3}
-                value={this.state.notes}
-                onChange={this.handleOnChange}
-                placeholder="Service Notes"
-              />
-            </div>
+        <label htmlFor="location">Location </label>
+        <Field 
+          name="location"
+          component="select"
+          value={this.state.location}
+          onChange={this.handleOnChange}>
+          <option />
+          <option>Onsite (office)</option>
+          <option>Onsite (home)</option>
+          <option>Offsite (video conference)</option>
+          <option>Offsite (phone call)</option>
+          <option>Other</option>
+        </Field>
+        </div>
+        <div>
+        <label htmlFor="notes">Notes </label>
+        <Field 
+            name="notes"
+            component="textarea"
+            rows={3}
+            value={this.state.notes}
+            onChange={this.handleOnChange}
+            placeholder="Service Notes"
+          />
         </div>
         <button disabled={!isEnabled}>Add Service Order</button>
       </form>

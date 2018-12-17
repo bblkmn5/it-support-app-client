@@ -8,7 +8,7 @@ const About = () => {
         <Col md={12}>
           <div className={'aboutText'}>
             <h1>IT-SUPPORT DATABASE</h1><br />
-            <h2>A Simple Computer Service Support Database</h2>
+            <h2>A Computer Service Support Database</h2>
             <p>Built with:</p>
             <ul>
               <li>React Frontend and Redux middleware</li>
