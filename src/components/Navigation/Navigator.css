@@ -1,4 +1,9 @@
 div a.active, li.active{
     font-weight: bold!important;
     color: #fff!important;
+    font-size: 20pt;
+}
+
+a, a.navbar-brand {
+    font-size: 18pt;
 }

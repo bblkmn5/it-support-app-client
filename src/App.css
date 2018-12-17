@@ -6,6 +6,7 @@ form.add-order {
 select, textarea, input {
   width: 50%;
   margin-left: 10px;
+  font-size: 15pt;
 }
 
 textarea {
@@ -40,3 +41,8 @@ label {
   font-size: 18pt;
   margin-top: 10px;
 } 
+
+td {
+  font-size: 13pt;
+  font-style: italic;
+}

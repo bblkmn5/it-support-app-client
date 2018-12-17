@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 function Order(props){
     const handleDelete = () => {
-        window.confirm("Are you sure you wish to delete this item?") &&
+        window.confirm("Are you sure you have completed this order? It will be deleted") &&
         props.onDelete(props.order.id)
     }
 
@@ -16,7 +16,7 @@ function Order(props){
             <td>{props.order.service}</td>
             <td>{props.order.technician}</td>
             <td>{props.order.notes}</td>
-            <td><Button bsSize="small" onClick={handleDelete}>Delete</Button></td>
+            <td><Button bsSize="small" onClick={handleDelete}>Complete</Button></td>
         </tr>    
     )
 }
