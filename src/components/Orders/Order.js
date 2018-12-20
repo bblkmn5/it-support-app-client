@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-function Order(props){
+const Order = props => {
     const handleDelete = () => {
         window.confirm("Are you sure you have completed this order? It will be deleted") &&
         props.onDelete(props.order.id)

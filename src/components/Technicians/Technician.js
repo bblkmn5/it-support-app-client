@@ -1,7 +1,6 @@
 import React from 'react';
 
-function Technician(props) {
-    
+const Technician = props => {
     return (
         <tr>
             <td>{props.technician.name}</td>

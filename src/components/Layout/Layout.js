@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Panel } from 'react-bootstrap';
 import Navigator from '../Navigation/Navigator';
 
-const Layout = (props) => {
+const Layout = props => {
     return (
         <Panel>
             <Grid>

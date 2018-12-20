@@ -8,7 +8,10 @@ import { bindActionCreators } from 'redux';
 class TechniciansContainer extends Component {
     constructor(props){
         super(props)
-
+        
+        this.state = {
+            showTechnicians: false
+        }
     }
 
     componentDidMount() {
@@ -17,6 +20,7 @@ class TechniciansContainer extends Component {
 
     render(){
         let renderedTechnicians = this.props.technicians.map(technician => <Technician key={technician.id} technician={technician} />)
+        const emptyMessage = ( <tr><td>There are no Technicians available!</td></tr>)
         return(
             <div>
                 <h1>Technicians Available</h1>
@@ -28,7 +32,7 @@ class TechniciansContainer extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                    {renderedTechnicians}
+                    {renderedTechnicians.length === 0 ? emptyMessage: renderedTechnicians}
                     </tbody>
                 </Table>
             </div>

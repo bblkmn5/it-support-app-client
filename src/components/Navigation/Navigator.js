@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import './Navigator.css';
 
-const Navigator = (props) => {
+const Navigator = () => {
   return (
     <Col md={12}>
       <Navbar inverse collapseOnSelect>
