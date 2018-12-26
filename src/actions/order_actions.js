@@ -32,7 +32,6 @@ export const createOrder = order => dispatch => {
     })
     .then(response => response.json())
     .then(order => dispatch(addOrder(order)))
-    .then(orders => dispatch(fetchOrders(orders)))
     .catch(error => console.log(error))
 }
 
