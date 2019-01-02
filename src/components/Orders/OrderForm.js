@@ -17,11 +17,11 @@ class OrderForm extends Component {
       service: '',
       location: '',
       technician: '',
-      notes: ''
+      notes: '',
+      likeCount: 0
     }
 
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    // this.handleTechnician = this.handleTechnician.bind(this);
   }
 
   componentDidMount() {
@@ -37,10 +37,6 @@ class OrderForm extends Component {
     );
   }
 
-  // technicianRegex(technician) {
-  //   return technician.split(/^[^\W]+/).shift()
-  // }
-
   handleOnChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -50,10 +46,6 @@ class OrderForm extends Component {
 
   handleOnSubmit = event => { 
     event.preventDefault();
-    // const technicianName = this.technicianRegex(this.state.technician)
-    // this.setState({
-    //   technician: technicianName
-    // })
     this.props.createOrder(this.state)
     this.setState({
       device: '',
@@ -65,38 +57,6 @@ class OrderForm extends Component {
     }) 
     this.props.handleCloseModal()
   }
-
-  // handleTechnician = (deviceType) => {
-  //   if (deviceType === "Mobile Phone"){
-  //     this.setState({
-  //       technician: 'Peter'
-  //     })
-  //   } else if (deviceType === 'Laptop' || deviceType === "Desktop" || deviceType === 'Tablet'){
-  //     this.setState({
-  //       technician: "Bob"
-  //     })
-  //   } else if (deviceType === 'Sound System'){
-  //     this.setState({
-  //       technician: 'Michelle'
-  //     })
-  //   } else if (deviceType === 'Printer'){
-  //     this.setState({
-  //       technician: 'Frank'
-  //     })
-  //   } else if (deviceType === 'Internet Router'){
-  //     this.setState({
-  //       technician: 'Louise'
-  //     })
-  //   } else if (deviceType === 'Television'){
-  //     this.setState({
-  //       technician: 'Tina'
-  //     })
-  //   } else {
-  //     this.setState({
-  //       technician: "Jack"
-  //     })
-  //   }
-  // }
 
   render() {
     const isEnabled = this.canBeSubmitted();
@@ -191,7 +151,7 @@ class OrderForm extends Component {
             placeholder="Service Notes"
           />
         </div>
-        <button disabled={!isEnabled}>Add Service Order</button>
+        <button disabled={!isEnabled} >Add Service Order</button>
       </form>
     </div>
     )
@@ -205,7 +165,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps,{ createOrder })(form(OrderForm));
-
-//You have to store the value of the radio button in state, and update it any time one of the radio buttons is updated.
-
-//Then, in your render method, render No1 or No2 based on the value of your current state

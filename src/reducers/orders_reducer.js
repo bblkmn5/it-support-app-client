@@ -16,6 +16,13 @@ const ordersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 orders: state.orders.filter(order => order.id !== action.id) };
+        case 'UPDATE_ORDER':
+            const orderIn = state.orders.filter(order => order.id === action.id)[0]
+            const index = state.orders.findIndex(a => a.id === action.order.id)
+            const editedOrder = Object.assign({}, orderIn, action.order )
+            return { 
+                ...state,
+                ...state.orders.slice(0, index), editedOrder, ...state.orders.slice(0, index + 1) }
         default:
             return state;
     }

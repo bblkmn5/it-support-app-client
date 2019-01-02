@@ -24,6 +24,10 @@ class OrdersContainer extends Component {
     this.props.fetchOrders()
   }
 
+  componentWillReceiveProps(props) {
+    this.setState(props);
+  }
+
   onDelete = id => this.props.deleteOrder(id)
   handleOpenModal = () => this.setState({showModal: true})
   handleCloseModal = () => this.setState({showModal: false})

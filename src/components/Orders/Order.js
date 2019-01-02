@@ -1,27 +1,46 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import { updateOrder } from '../../actions/order_actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 
 class Order extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            likedOrder: 0
+            likeCount: this.props.order.likeCount
         }
-        this.handleLike = this.handleLike.bind(this);
-    } 
+
+        // this.handleLike = this.handleLike.bind(this);
+    }
+
+    componentWillReceiveProps(props) {
+        this.setState(props);
+      }
 
     handleDelete = () => {
         window.confirm("Are you sure you have completed this order? It will be deleted") &&
         this.props.onDelete(this.props.order.id)
     }
-    
-    handleLike () {
-        
+
+    handleOnChange = () => {
         this.setState({
-             likedOrder: this.state.likedOrder + 1
+          likeCount: this.props.order.likeCount += 1
         })
+        this.props.updateOrder(this.props.order.id, this.state)
+        console.log(this.props.order.likeCount)
     }
+    
+    // handleLike = (event) => {
+    //     event.preventDefault()
+    //     console.log(this.state)
+    //     this.setState({
+    //         likeCount: this.props.order.likeCount += 1
+    //     })
+    //     this.props.updateOrder(this.props.order.id, this.props.order)
+    // }
+
     render(){
         const { props } = this;
 
@@ -35,10 +54,22 @@ class Order extends Component {
                 <td>{props.order.technician}</td>
                 <td>{props.order.notes}</td>
                 <td><Button bsSize="small" onClick={this.handleDelete}>Complete</Button></td>
-                <td><Button bsSize="small" onClick={this.handleLike}>Like</Button>Count: {this.state.likedOrder}</td>
+                <td><Button bsSize="small" onClick={this.handleOnChange}>Like</Button>Count: {this.props.order.likeCount}</td>
             </tr>    
         )
     }
 }
 
-export default Order;
+const mapStateToProps = state => {
+    return {
+      orders: state.orders.orders
+    };
+  }
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({
+        updateOrder: updateOrder
+    }, dispatch)
+}
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Order);

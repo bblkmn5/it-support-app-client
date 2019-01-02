@@ -14,6 +14,24 @@ const destroyOrder = order => {
     return { type: 'DELETE_ORDER', id: order }
 }
 
+const editOrder = order => {
+    return { type: 'UPDATE_ORDER', order}
+}
+
+export const updateOrder = (id, order) => dispatch => {
+    return fetch(`${API_URL}/orders/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ order }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(order => dispatch(editOrder(order)))
+    .catch(error => console.log(error))
+}
+
 export const fetchOrders = () => dispatch => {
     return fetch(`${API_URL}/orders`)
         .then(response => response.json())
