@@ -20,9 +20,11 @@ const ordersReducer = (state = initialState, action) => {
             const orderIn = state.orders.filter(order => order.id === action.id)[0]
             const index = state.orders.findIndex(a => a.id === action.order.id)
             const editedOrder = Object.assign({}, orderIn, action.order )
-            return { 
+            const updatedState = { 
                 ...state,
-                ...state.orders.slice(0, index), editedOrder, ...state.orders.slice(0, index + 1) }
+                orders: [...state.orders.slice(0, index), editedOrder, ...state.orders.slice(index + 1) ]}
+            //debugger
+            return updatedState
         default:
             return state;
     }

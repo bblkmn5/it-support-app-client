@@ -32,8 +32,8 @@ class OrdersContainer extends Component {
   handleOpenModal = () => this.setState({showModal: true})
   handleCloseModal = () => this.setState({showModal: false})
 
-  render() {
-    let renderedOrders = this.props.orders.map(order => <Order key={order.id} order={order} onClick={this.handleRowClick} onDelete={this.onDelete} />)
+  render() { 
+    let renderedOrders = this.props.orders.sort((a, b) => b.likeCount - a.likeCount).map(order => <Order key={order.id} order={order} onClick={this.handleRowClick} onDelete={this.onDelete} />)
     const emptyMessage = ( <tr><td>There are no orders!</td></tr> )
     return (
       <div>

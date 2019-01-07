@@ -25,21 +25,25 @@ class Order extends Component {
     }
 
     handleOnChange = () => {
-        this.setState({
-          likeCount: this.props.order.likeCount += 1
-        })
-        this.props.updateOrder(this.props.order.id, this.state)
+        this.props.updateOrder(this.props.order.id, {likeCount: this.props.order.likeCount + 1})
         console.log(this.props.order.likeCount)
     }
     
-    // handleLike = (event) => {
-    //     event.preventDefault()
-    //     console.log(this.state)
-    //     this.setState({
-    //         likeCount: this.props.order.likeCount += 1
-    //     })
-    //     this.props.updateOrder(this.props.order.id, this.props.order)
-    // }
+    handleFetchAssessment = () => {
+        const API_URL = process.env.REACT_APP_API_URL;
+        console.log('a')
+        fetch(`${API_URL}/orders`)
+            .then(response => {
+                console.log('b')
+                return response.json()
+            })
+            .then(orders => console.log('c', orders))
+            console.log('d')
+
+            // a d b c
+    }
+
+    
 
     render(){
         const { props } = this;
